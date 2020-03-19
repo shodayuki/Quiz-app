@@ -2,6 +2,7 @@ React Routerでアプリケーションを作成
 
 ## Dependency
 ・React: 16.13.0
+
 ・jest: 25.1.0
 
 
