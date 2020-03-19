@@ -1,13 +1,14 @@
 React Routerでアプリケーションを作成
 
-Dependency
+## Dependency
 ・React: 16.13.0
+
 ・jest: 25.1.0
 
 
-Author
+## Author
 ・Github: shodayuki
 
 
-License
+## License
 This software is released under the MIT License.
