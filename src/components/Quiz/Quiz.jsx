@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import QuizModel from '../../models/Quiz';
 import Button from '../Button/Button';
+import './Quiz.css';
 
 class Quiz extends React.Component {
   constructor(props) {
@@ -37,7 +39,7 @@ class Quiz extends React.Component {
       numberOfCorrects++;
       alert('Correct answer!!');
     } else {
-      alert('Wrong answer... (The correct answer is "${quiz.correctAnswer}")');
+      alert(`Wrong answer... (The correct answer is "${quiz.correctAnswer}")`);
     }
     currentIndex++;
 
@@ -60,9 +62,10 @@ class Quiz extends React.Component {
       return this.renderQuiz();
     }
 
-    return (
-      <h1>Quizです</h1>
-    );
+    // クイズ結果
+    if (quizzes.length > 0 && currentIndex >= quizzes.length) {
+      return this.renderResult();
+    }
   }
 
   renderLoading() {
@@ -71,7 +74,7 @@ class Quiz extends React.Component {
         <h1>クイズページ</h1>
         <p>Now Loading...</p>
         <hr/>
-        {/* <Link to="/">トップページへ</Link> */}
+        <Link to="/">トップページへ</Link>
       </div>
     );
   }
@@ -99,9 +102,29 @@ class Quiz extends React.Component {
           <p>{quiz.question}</p>
           <ul className="QuizList">{answers}</ul>
         </div>
-        {/* <Link to="/">トップページへ</Link> */}
+        <Link to="/">トップページへ</Link>
       </div>
     );
+  }
+
+  renderResult() {
+    const { quizzes, numberOfCorrects } = this.state;
+
+    return (
+      <div>
+        <h1>クイズページ</h1>
+        <div>
+          <p id="result">{`${numberOfCorrects}/${quizzes.length} corrects.`}</p>
+          <Button
+            onClickHandler={() => {this.restart()}}
+          >
+            Restart
+          </Button>
+        </div>
+        <hr/>
+        <Link to="/">トップページへ</Link>
+      </div>
+    )
   }
 }
 
