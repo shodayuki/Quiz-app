@@ -1,8 +1,18 @@
 import React from 'react';
+import Button from '../Button/Button';
 
-const Home = () => {
+const Home = ({history}) => {
   return (
-    <h1>Homeです</h1>
+    <div>
+      <h1>Homeです</h1>
+      <Button
+          onClickHandler={() => {
+          history.push('/quiz');
+        }}
+      >
+        クイズページへ移動
+      </Button>
+    </div>
   );
 };
 
